@@ -1585,7 +1585,7 @@
 	}
 
 	p, ul, ol, dl, table, blockquote {
-		margin: 0 0 2em 0;
+		margin: 16px 0 2em 0;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -2426,7 +2426,7 @@
 			#banner .inner header {
 				display: inline-block;
 				border-bottom: solid 2px;
-				border-top: solid 2px;
+				/*border-top: solid 2px; */
 				margin: 0 0 2em 0;
 				padding: 3px 0 3px 0;
 			}

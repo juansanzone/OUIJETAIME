@@ -14,7 +14,9 @@
 
 			<!-- Header -->
 				<header id="header" class="alt">
-					<h1 id="logo"><a href="index.html">Oui Je Taime<span> | Wedding Planner</span></a></h1>
+					
+					<img src="images/logo_ok.png" width="150px" style="margin-left: 4px;margin-top: 1px;" />
+
 					<nav id="nav">
 						<ul>
 							<li class="current"><a href="index.html">Inicio</a></li>
@@ -58,7 +60,8 @@
 					<div class="inner">
 
 						<header>
-							<h2>Oui Je Taime</h2>
+							<!-- <h2>Oui Je Taime</h2> -->
+							<img src="images/logo_ok.png" width="300px" />
 						</header>
 
 						<p>Organizamos <strong>Bodas</strong>, <strong>Bautismos</strong>, <strong>Cumpleaños</strong>
@@ -117,52 +120,12 @@
 							</header>
 
 							<div class="row">
-								<div class="6u 12u(narrower)">
 
-									<section>
-										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-										<header>
-											<h3>Evento 1 - Descripcion</h3>
-										</header>
-										<!-- <p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p> -->
-									</section>
 
-								</div>
-								<div class="6u 12u(narrower)">
+								<div id="instafeed"></div>
 
-									<section>
-										<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-										<header>
-											<h3>Evento 2 - Descripcion</h3>
-										</header>
-										<!-- <p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p> -->
-									</section>
-
-								</div>
-							</div>
-							<div class="row">
-								<div class="6u 12u(narrower)">
-
-									<section>
-										<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-										<header>
-											<h3>Evento 3 - Descripcion</h3>
-										</header>
-										<!-- <p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p> -->
-									</section>
-
-								</div>
-								<div class="6u 12u(narrower)">
-
-									<section>
-										<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-										<header>
-											<h3>Evento 4 - Descripcion</h3>
-										</header>
-										<!-- <p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p> -->
-									</section>
-
-								</div>
+								<a class="button special fit" id="load-more">Ver mas</a>
+			
 							</div>
 
 						</section>
@@ -214,6 +177,47 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+
+			<!-- Instagram feed Plugin -->
+			<script  src="https://cdn.rawgit.com/stevenschobert/instafeed.js/master/instafeed.min.js"></script>
+
+
+				<script type="text/javascript">
+
+		var $loadMoreBtn = document.getElementById('load-more');
+	    var feed = new Instafeed({
+	        get: 'tagged',
+	        tagName: 'miboda',
+	        clientId: 'cddac7199b2043f2a62beccd9e78d03d',
+	        limit: 9,
+	        filter: function(image) {
+	   			console.log(image);
+	   			return image.type == "image";
+  	  			//return image.user.id == 1698712613 && image.type == "image" && !invalidTags;
+  			},
+
+  			// class="image featured
+
+  			template: '<a href="{{link}}" target="_blank" ><img src="{{model.images.low_resolution.url}}" alt="" width="300px" /></a>',
+  			
+  			after: function() {
+    			if (!this.hasNext()) {
+      				$loadMoreBtn.setAttribute('disabled', 'disabled');
+    			}
+    		}
+	    });
+
+		// bind more elements button
+		$loadMoreBtn.addEventListener('click', function() {
+		  feed.next();
+		});
+
+
+	    feed.run();
+	</script>
+
+
+
 
 	</body>
 </html>
