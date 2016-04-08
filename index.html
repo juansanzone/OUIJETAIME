@@ -190,6 +190,7 @@
 	        tagName: 'ouijetaimewedding',
 	        clientId: 'cddac7199b2043f2a62beccd9e78d03d',
 	        limit: 9,
+	        sortBy: 'most-recent',
 	        filter: function(image) {
 	   			console.log(image);
 	   			return image.type == "image";
@@ -198,7 +199,7 @@
 
   			// class="image featured
 
-  			template: '<a href="{{link}}" target="_blank" ><img src="{{model.images.low_resolution.url}}" alt="" width="300px" /></a>',
+  			template: '<a href="{{link}}" target="_blank" ><img src="{{model.images.low_resolution.url}}" alt="" width="300px" height="320px" /></a>',
   			
   			after: function() {
     			if (!this.hasNext()) {
